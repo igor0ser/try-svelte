@@ -11,11 +11,6 @@
 </script>
 
 <style>
-  h1 {
-    color: yellow;
-    background-color: #333;
-    padding: 20px;
-  }
 </style>
 
 <Router>
