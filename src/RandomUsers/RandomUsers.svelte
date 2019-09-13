@@ -1,25 +1,5 @@
 <script>
-  import { onMount } from 'svelte'
-  import axios from 'axios'
-
-  let users = []
-  let loading = true
-
-  onMount(async () => {
-    const res = await axios.get('https://randomuser.me/api/?results=10')
-    console.log(res.data.results);
-
-    users = res.data.results
-    loading = false
-  })
-
-  const edit = () => {
-    console.log('edit');
-  }
-
-  const del = () => {
-    console.log('del');
-  }
+  import axios from 'axios/index'
 </script>
 
 <style>
@@ -29,18 +9,16 @@
 </style>
 
 <div class="row">
-  <h1>
-    Home page here
-  </h1>
-  {#if loading}
+  <h1>Random users</h1>
+  {#await axios.get('https://randomuser.me/api/?results=10')}
     <div class="progress">
-        <div class="indeterminate"></div>
-        </div>
-  {:else}
-    {#if users.length === 0}
+      <div class="indeterminate"></div>
+    </div>
+  {:then res }
+    {#if res.data.results.length === 0}
       No users found
     {:else}
-      {#each users as user}
+      {#each res.data.results as user}
         <div class="col s6">
           <div class="card">
             <div class="card-content">
@@ -56,5 +34,11 @@
         </div>
       {/each}
     {/if}
-  {/if}
+  {:catch error}
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text">
+        <span class="card-title">Fetch failed</span>
+      </div>
+    </div>
+  {/await}
 </div>

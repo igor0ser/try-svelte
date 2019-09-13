@@ -9,7 +9,8 @@
     </Link>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><Link to="/">Home</Link></li>
-      <li><Link to="/about">About</Link></li>
+      <li><Link to="/random-users">Random users</Link></li>
+      <li><Link to="/todo-list">Todo list</Link></li>
     </ul>
   </div>
 </nav>

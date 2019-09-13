@@ -4,8 +4,9 @@
 
   import { Router, Route } from 'svelte-routing';
   import Navbar from './Navbar.svelte'
-  import Home from './Home.svelte'
-  import About from './About.svelte'
+  import Home from './Home/Home.svelte'
+  import RandomUsers from './RandomUsers/RandomUsers.svelte'
+  import TodoList from './TodoList/TodoList.svelte'
 
   export let name;
 </script>
@@ -17,7 +18,8 @@
   <Navbar />
   <div class="container">
     <Route path="/" component={Home} />
-    <Route path="/about" component={About} />
+    <Route path="/random-users" component={RandomUsers} />
+    <Route path="/todo-list" component={TodoList} />
   </div>
 </Router>
 
