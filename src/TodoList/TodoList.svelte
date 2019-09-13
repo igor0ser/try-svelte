@@ -1,5 +1,18 @@
+<script>
+  import FormModal from './FormModal.svelte'
 
+  let items = []
 
-<h1>
-  Todo List
-</h1>
+  const addItem = (newItem) => {
+    items = [...items, newItem]
+  }
+</script>
+
+<div>
+  <h1>
+    Todo List
+  </h1>
+  <FormModal {addItem} />
+  <hr />
+  {items.toString()}
+</div>

@@ -1,5 +1,13 @@
 <script>
   import axios from 'axios/index'
+
+  const del = () => {
+    alert('delete of the user would be implemented soon')
+  }
+
+  const edit = () => {
+    alert('edit of the user would be implemented soon')
+  }
 </script>
 
 <style>
