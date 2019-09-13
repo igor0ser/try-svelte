@@ -1,10 +1,19 @@
 <script>
   import FormModal from './FormModal.svelte'
+  import Task from './Task.svelte'
 
-  let items = []
+  let tasks = [{ name: '123', completed: true }]
 
-  const addItem = (newItem) => {
-    items = [...items, newItem]
+  const addItem = (taskName) => {
+    tasks = [...tasks, { name: taskName, completed: false }]
+  }
+
+  const completeTask = (task) => {
+    tasks = tasks.map(t => t === task ? { ...task, completed: !task.completed } : t)
+  }
+
+  const deleteTask = (task) => {
+    tasks = tasks.filter(t => t !== task)
   }
 </script>
 
@@ -13,6 +22,10 @@
     Todo List
   </h1>
   <FormModal {addItem} />
-  <hr />
-  {items.toString()}
+
+  <ul class="collection">
+    {#each tasks as task}
+      <Task {task} {completeTask} {deleteTask} key={task.name} />
+    {/each}
+  </ul>
 </div>
